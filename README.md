@@ -1,8 +1,11 @@
 # FruitTower
 ### made by:
 Ralph Luis B. Abejuela
+
 Christian Bernard Papa
+
 Thomas Nathaniel Palacio
+
 Jeremy Moron
 
 ## To play the game:
