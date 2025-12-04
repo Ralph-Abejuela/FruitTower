@@ -23,6 +23,8 @@ public class PlayerMove2D : MonoBehaviour
     // State Variables
     private Rigidbody2D rb;
     private Collider2D col; // Reference to the collider to swap materials
+    private SpriteRenderer sr; // Reference to the collider to swap materials
+    private Animator anim;
     private bool isGrounded;
     private bool isCharging;
     private bool isJumping;
@@ -33,6 +35,8 @@ public class PlayerMove2D : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>(); // Get the BoxCollider2D
+        sr = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
         jumpAngle.Normalize();
     }
 
@@ -43,6 +47,18 @@ public class PlayerMove2D : MonoBehaviour
 
         // 2. Read Input
         inputX = Input.GetAxisRaw("Horizontal");
+
+        if (inputX > 0)
+        {
+            sr.flipX = true;
+        }
+        else if (inputX < 0)
+        {
+            sr.flipX = false;
+        }
+
+        anim.SetBool("isJumping", isJumping);
+        anim.SetBool("isCharging", isCharging);
 
         HandleJumpInput();
     }
